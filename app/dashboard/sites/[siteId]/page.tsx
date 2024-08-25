@@ -48,7 +48,7 @@ export default async function SiteIdRoute({params} : {params : {siteId : string}
             Settings</Link>
         </Button>
         <Button asChild>
-            <Link href="#">
+            <Link href={`/dashboard/sites/${params.siteId}/create`}>
             <PlusCircleIcon className="size-4 mr-2"/>
             Create Article
             </Link>
