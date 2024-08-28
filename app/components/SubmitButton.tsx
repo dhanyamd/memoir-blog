@@ -24,7 +24,7 @@ export function SubmitButton({text, className, variant} : Props){
         <Loader2 className="mr-2 size-4 animate-spin"/> Please wait
        </Button>
      ) : (
-        <Button className={cn("w-fit", className)} type="submit" variant={variant}></Button>
+        <Button className={cn("w-fit", className)} type="submit" variant={variant}>{text}</Button>
      )}
      </>
     )
