@@ -27,7 +27,7 @@ export default function ArticleCreateSite({params} : {params : {siteId : string}
     const [slug, setSlug] = useState<undefined | string>(undefined)
     const [lastResult,action] = useFormState(CreatePostAction, undefined )
     const [form, fields] = useForm({
-        lastResult,
+        lastResult, 
         onValidate({formData}){
             return parseWithZod(formData, {schema : PostSchema})
         },
