@@ -25,11 +25,12 @@ export default function ArticleCreateSite({params} : {params : {siteId : string}
     const [value, setValue] = useState<undefined | JSONContent>(undefined)
     const [title, setTitle] = useState<undefined | string>(undefined)
     const [slug, setSlug] = useState<undefined | string>(undefined)
+    // useFormState is used here to fetch data from our server action
     const [lastResult,action] = useFormState(CreatePostAction, undefined )
     const [form, fields] = useForm({
         lastResult, 
         onValidate({formData}){
-            return parseWithZod(formData, {schema : PostSchema})
+          return parseWithZod(formData, {schema : PostSchema})
         },
         shouldValidate : 'onBlur',
         shouldRevalidate : 'onInput'
