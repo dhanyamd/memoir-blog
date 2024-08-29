@@ -1,5 +1,6 @@
 "use client"
 import { CreateSiteAction } from "@/app/action";
+import { SubmitButton } from "@/app/components/SubmitButton";
 import { siteSchema } from "@/app/utils/zodSchema";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -63,7 +64,7 @@ export default function NewSiteRoute(){
                 </div>
             </CardContent>
             <CardFooter>
-                <Button className="flex items-center w-full"> Submit </Button>
+              <SubmitButton text="Create Site"/>
             </CardFooter>
            </form>
         </Card>

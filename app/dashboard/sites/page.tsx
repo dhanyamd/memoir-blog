@@ -7,6 +7,7 @@ import Link from "next/link";
 import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import Image from "next/image";
 import noImage from "@/public/faceless.png"
+import { EmptyState } from "@/app/components/EmptyState";
 
 async function getData(userId : string){
   const data = await prisma.site.findMany({
@@ -44,22 +45,12 @@ export default async function SiteRoute(){
     </div>
     
     {data === undefined || data.length === 0 ? (
-      <div className="flex flex-col justify-center items-center rounded-md border border-dashed p-8 text-center 
-      animate-in fade-in-50">
-         <div className="flex size-20 items-center justify-center rounded-xl bg-primary/20">
-         <FileIcon className="size-10 text-primary"/>
-         </div>
-         <h2 className="mt-6 text-xl font-semibold">You dont have any sites yet. Please create one!</h2>
-         <p className="mb-4 mt-2 text-center text-sm leading-text-muted-foreground max-w-sm mx-auto">
-           Get started! create and craft your site now
-         </p>
-         <Button asChild>
-      <Link href={"/dashboard/sites/new"}>
-      <PlusCircleIcon className="mr-2 size-4"/>
-      Create Site
-      </Link>
-      </Button>
-     </div>
+      <EmptyState
+       title="You dont have any sites yet. Please create one!"
+       description="Get started! create and craft your site now"
+       buttonText="Create Site"
+       href="/dashboard/sites/new"
+       />
     ) : (
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-10">
        {data.map((item) => (
