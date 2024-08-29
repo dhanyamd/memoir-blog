@@ -1,7 +1,8 @@
-import {z} from "zod"
+import { conformZodMessage } from "@conform-to/zod"
+import { z} from "zod"
 
 export const siteSchema = z.object({
-    name : z.string().min(1).max(35),
+    name : z.string().min(1).max(35), 
     description : z.string().min(1).max(150),
     subdomain : z.string().min(1).max(40)
 })
@@ -13,3 +14,34 @@ export const PostSchema = z.object({
     smallDescription : z.string().min(1).max(200),
     articleContent : z.string().min(1)
 })
+
+export function siteCreationSchema(options? : {
+  isSubDirectoryUnique : () => Promise<boolean>
+}){
+  return z.object({
+    subdomain : z.string().min(1).max(40).regex(/^[a-z]+$/, "Subdomain must only be in lowercase letters" )
+    .transform((value) => value.toLocaleLowerCase())
+    .pipe(
+        z.string().superRefine((email, ctx) => {
+            if(typeof options?.isSubDirectoryUnique !== "function"){
+                ctx.addIssue({
+                    code : "custom",
+                    message : conformZodMessage.VALIDATION_UNDEFINED,
+                    fatal : true
+                })
+                 return;
+            }
+           return options.isSubDirectoryUnique().then((isUnique) => {
+            if (!isUnique){
+                ctx.addIssue({
+                    code : "custom",
+                    message : "Subdomain is already taken.."
+                })
+            }
+           })
+        })
+    ),
+    name : z.string().min(1).max(35), 
+    description : z.string().min(1).max(150)
+  })
+}

@@ -1,6 +1,6 @@
 "use server"
 import { redirect } from "next/navigation";
-import { PostSchema, siteSchema } from "./utils/zodSchema";
+import { PostSchema, siteCreationSchema, siteSchema } from "./utils/zodSchema";
 import {parseWithZod} from "@conform-to/zod"
 import prisma from "./utils/db";
 import { getUser } from "./utils/getUser";
@@ -9,8 +9,19 @@ import { getUser } from "./utils/getUser";
 export async function CreateSiteAction(prevState : any, formData : FormData){
      const user = await getUser()
 
-    const submission = parseWithZod(formData, {
-        schema : siteSchema
+    const submission = await parseWithZod(formData, {
+        schema : siteCreationSchema({
+          async isSubDirectoryUnique(){
+            const existingSubDomain = prisma.site.findUnique({
+              //@ts-ignore
+              where : {
+                subdirectory : formData.get("subdirectory") as string,
+              }
+            })
+            return !existingSubDomain
+          }
+        }),
+        async : true
     })
 
     if(submission.status !== "success"){

@@ -49,7 +49,7 @@ export default function NewSiteRoute(){
                    name={fields.subdomain.name}
                    key={fields.subdomain.key}
                    defaultValue={fields.subdomain.initialValue}
-                    placeholder="sub domain"/>
+                    placeholder="subdomain"/>
                     <p className="text-red-500 text-sm">{fields.subdomain.errors}</p>
                   </div>
                   <div className="grid gap-2">
