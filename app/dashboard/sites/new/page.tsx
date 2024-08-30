@@ -1,7 +1,7 @@
 "use client"
 import { CreateSiteAction } from "@/app/action";
 import { SubmitButton } from "@/app/components/SubmitButton";
-import { siteSchema } from "@/app/utils/zodSchema";
+import { siteCreationSchema, siteSchema } from "@/app/utils/zodSchema";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
