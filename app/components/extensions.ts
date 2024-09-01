@@ -1,4 +1,5 @@
 import {
+  TiptapImage,
   TiptapLink,
   TaskList,
   TaskItem,
@@ -16,7 +17,7 @@ const placeholder = Placeholder;
 const tiptapLink = TiptapLink.configure({
   HTMLAttributes: {
     class: cx(
-      "text-muted-foreground underline underline-offset-[3px] hover:text-primary transition-colors cursor-pointer"
+      "text-muted-foreground underline underline-offset-[3px] hover:text-primary transition-colors cursor-pointer",
     ),
   },
 });
@@ -44,7 +45,6 @@ const starterKit = StarterKit.configure({
     HTMLAttributes: {
       class: cx("list-disc list-outside leading-3 -mt-2"),
     },
-    
   },
   orderedList: {
     HTMLAttributes: {
@@ -84,6 +84,7 @@ export const defaultExtensions = [
   starterKit,
   placeholder,
   TiptapLink,
+  TiptapImage,
   taskList,
   taskItem,
   horizontalRule,
