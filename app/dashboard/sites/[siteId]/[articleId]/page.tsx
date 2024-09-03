@@ -1,4 +1,4 @@
-import { EditArticleForm } from "@/app/components/forms/Edit ArticleForm";
+import { EditArticleForm } from "@/app/components/forms/EditArticleForm";
 import prisma from "@/app/utils/db";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";

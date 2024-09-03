@@ -138,7 +138,8 @@ export default function ArticleCreateSite({params} : {params : {siteId : string}
                 name={fields.articleContent.name}
                 key={fields.articleContent.key}
                 defaultValue={fields.articleContent.initialValue}
-                value={JSON.stringify(value)}
+               value={JSON.stringify(value)}
+              // value={value}
                 />
                 <TailwindEditor onChange={setValue} initialValue={value} />
                 <p className="text-500 text-sm">{fields.articleContent.errors}</p>

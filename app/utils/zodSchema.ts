@@ -32,7 +32,7 @@ export function siteCreationSchema(options? : {
                  return;
             }
            return options.isSubDirectoryUnique().then((isUnique) => {
-            if (!isUnique){
+            if (isUnique){
                 ctx.addIssue({
                     code : "custom",
                     message : "Subdomain is already taken.."
