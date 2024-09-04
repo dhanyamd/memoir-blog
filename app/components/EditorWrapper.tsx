@@ -2,7 +2,6 @@
 
 import { EditorCommand, EditorCommandEmpty, EditorCommandItem, EditorCommandList, EditorContent, EditorRoot } from "novel";
 import { JSONContent } from "novel";
-import { useState } from "react";
 import { defaultExtensions } from "./extensions";
 import { slashCommand, suggestionItems } from "./SlashCommand";
 import { handleCommandNavigation } from "novel/extensions";
@@ -21,7 +20,7 @@ const TailwindEditor = ({initialValue, onChange} : EditorProps) => {
       className="border p-4 rounded-lg min-h-64"
         editorProps={{
           handleDOMEvents: {
-            keydown: (_view : any, event : any) => handleCommandNavigation(event),
+            keydown: (_view, event ) => handleCommandNavigation(event),
           },
           attributes: {
             class: `prose prose-lg dark:prose-invert prose-headings:font-title font-default focus:outline-none max-w-full`,
@@ -48,9 +47,9 @@ const TailwindEditor = ({initialValue, onChange} : EditorProps) => {
           {item.icon}
         </div>
         <div>
-          <p className='font-medium'>{item.title}</p>
-          <p className='text-xs text-muted-foreground'>{item.description}</p>
-        </div>
+          <div className='font-medium'>{item.title}</div>
+          <div className='text-xs text-muted-foreground'>{item.description}</div>
+          </div>
       </EditorCommandItem>
     ))}
 </EditorCommandList>

@@ -1,3 +1,5 @@
+
+
 import {
   CheckSquare,
   Code,
@@ -11,7 +13,6 @@ import {
   TextQuote,
 } from "lucide-react";
 import { createSuggestionItems } from "novel/extensions";
-
 import { Command, renderItems } from "novel/extensions";
 
 export const suggestionItems = createSuggestionItems([
@@ -29,7 +30,6 @@ export const suggestionItems = createSuggestionItems([
         .run();
     },
   },
-
   {
     title: "To-do List",
     description: "Track tasks with a to-do list.",

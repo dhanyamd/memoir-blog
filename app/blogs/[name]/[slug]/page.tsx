@@ -33,7 +33,7 @@ async function getData(slug : string){
 export default async function SlugRoute({params} : {params : {slug : string, name : string}}){
     const data = await getData(params.slug);
     return (
-        <div>
+        <>
         <div className="flex items-center justify-between gap-x-3 pt-10 pb-5">
             <div className="flex flex-row items-center justify-start">
             <Button size="icon" variant="outline" asChild >
@@ -66,10 +66,10 @@ export default async function SlugRoute({params} : {params : {slug : string, nam
         md:rounded-2xl lg:w-2/3">
         <Image priority src={data.image} alt={data.title} width={1200} height={630} className="h-full w-full object-cover" />
         </div>
+       
+       <RenderArticle json={data.articleContent as JSONContent} />
 
-        <RenderArticle json={data.articleContent as JSONContent} />
-
-        </div>
+        </>
     
     )
 }

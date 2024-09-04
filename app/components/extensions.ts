@@ -1,5 +1,4 @@
 import {
-  TiptapImage,
   TiptapLink,
   TaskList,
   TaskItem,
@@ -17,16 +16,17 @@ const placeholder = Placeholder;
 const tiptapLink = TiptapLink.configure({
   HTMLAttributes: {
     class: cx(
-      "text-muted-foreground underline underline-offset-[3px] hover:text-primary transition-colors cursor-pointer",
+      "text-muted-foreground underline underline-offset-[3px] hover:text-primary transition-colors cursor-pointer"
     ),
   },
 });
 
 const taskList = TaskList.configure({
   HTMLAttributes: {
-    class: cx("not-prose pl-2"),
+    class: cx("not-prose pb-2 pl-2"),
   },
 });
+
 const taskItem = TaskItem.configure({
   HTMLAttributes: {
     class: cx("flex items-start my-4"),
@@ -84,9 +84,7 @@ export const defaultExtensions = [
   starterKit,
   placeholder,
   TiptapLink,
-  TiptapImage,
   taskList,
   taskItem,
   horizontalRule,
-  tiptapLink
 ];

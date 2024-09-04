@@ -36,6 +36,7 @@ async function getData(userId : string, siteId : string){
   return data 
 }
 
+
 export default async function SiteIdRoute({params} : {params : {siteId : string}}){
     const {getUser} =  getKindeServerSession();
     const user = await getUser()
@@ -45,11 +46,12 @@ export default async function SiteIdRoute({params} : {params : {siteId : string}
     }
 
     const data = await getData(user.id, params.siteId)
+
     return (
-        <>
+       <div>
         <div className="flex w-full justify-end gap-4">
         <Button asChild variant="secondary">
-            <Link href={`/blogs/${data.Site?.subdirectory}`}>
+            <Link href={`/blogs/${data[0].Site?.subdirectory}`}>
             <Book className="size-4 mr-2"/>
             View Blogs</Link>
         </Button>
@@ -140,6 +142,6 @@ export default async function SiteIdRoute({params} : {params : {siteId : string}
             </Card>
           </div>
         )}
-        </>
+        </div>
     )
 }
