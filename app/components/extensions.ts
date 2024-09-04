@@ -88,4 +88,5 @@ export const defaultExtensions = [
   taskList,
   taskItem,
   horizontalRule,
+  tiptapLink
 ];

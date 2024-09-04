@@ -49,7 +49,7 @@ export default async function SiteIdRoute({params} : {params : {siteId : string}
         <>
         <div className="flex w-full justify-end gap-4">
         <Button asChild variant="secondary">
-            <Link href={`/blogs/${data[0].Site?.subdirectory}`}>
+            <Link href={`/blogs/${data.Site?.subdirectory}`}>
             <Book className="size-4 mr-2"/>
             View Blogs</Link>
         </Button>

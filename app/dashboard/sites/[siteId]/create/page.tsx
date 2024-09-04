@@ -112,6 +112,7 @@ export default function ArticleCreateSite({params} : {params : {siteId : string}
                 />
                  {imageUrl ? (
                     <Image
+                    priority
                     src={imageUrl}
                     alt="Uploaded image"
                     className="object-cover w-[200px] h-[200px] rounded-lg" 
