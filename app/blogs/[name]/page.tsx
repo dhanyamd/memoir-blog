@@ -61,12 +61,12 @@ export default async function BlogIndexPage({params} : {params : {name : string}
          width={400}
          height={200}
          />
-         <CardHeader className="p-6">
-          <CardTitle className="px-1 truncate">{item.title}</CardTitle>
-         <CardDescription className="px-1 line-clamp-3">{item.smallDescription}</CardDescription>
+         <CardHeader>
+          <CardTitle className="p-1 truncate">{item.title}</CardTitle>
+         <CardDescription className=" px-1 line-clamp-2">{item.smallDescription}</CardDescription>
          </CardHeader>
          <CardFooter>
-          <Button asChild className="flex justify-center items-center w-full ">
+          <Button asChild className=" w-full ">
             <Link href={`/blogs/${params.name}/${item.slug}`}>Read More</Link>
           </Button>
          </CardFooter>
