@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Check } from "lucide-react";
+import { SubmitButton } from "../SubmitButton";
 
 interface iAppProps{
     id : number;
@@ -47,11 +48,20 @@ export default function PricingTable() {
                 Choose your pricing plan and get ready to start enjoy writing your blogs with our plan :)
             </p>
          
-           <div className="grid grid-cols-1 gap-8 mt-5 lg:grid-cols-2">
+           <div className="grid grid-cols-1 gap-8 mt-16 lg:grid-cols-2">
              {PricingPlans.map((item) => (
-                <Card key={item.id}>
+                <Card key={item.id} className={item.id === 1 ? "border-primary" : "" }>
                   <CardHeader>
-                    <CardTitle>{item.cardTitle}</CardTitle>
+                    <CardTitle>
+                        {item.id === 1 ? (
+                           <div className="flex items-center justify-between">
+                            <h3 className="text-primary">Startup</h3>
+                             <p className="rounded-full bg-primary/20 px-3 py-1 text-xs font-semibold leading-5 text-primary">Most Popular</p>
+                           </div>
+                        ) : (
+                            <>{item.cardTitle}</>
+                        )}
+                    </CardTitle>
                     <CardDescription>{item.cardDescription}</CardDescription>
                   </CardHeader>
                   <CardContent>
@@ -66,7 +76,13 @@ export default function PricingTable() {
                         </ul>
                     </CardContent>
                     <CardFooter>
-                        <Button>Choose Plan</Button>
+                        {item.id === 1 ? (
+                           <form className="w-full">
+                            <SubmitButton className="mt-5 w-full" text="Buy Plan"/>
+                           </form>
+                        ) : (
+                            <Button variant={"outline"} className="mt-5 w-full">Try for free!</Button>
+                        )}
                     </CardFooter>
                 </Card>
              ))}
