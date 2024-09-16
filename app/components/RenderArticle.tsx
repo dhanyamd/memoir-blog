@@ -19,6 +19,7 @@ import CodeBlock from "@tiptap/extension-code-block";
 import OrderList from "@tiptap/extension-ordered-list";
 import Bold from "@tiptap/extension-bold"; 
 import HardBreak from "@tiptap/extension-hard-break"; 
+import { TiptapImage } from "novel/extensions";
 
 
 export function RenderArticle({ json }: { json: JSONContent }) {
@@ -40,6 +41,7 @@ export function RenderArticle({ json }: { json: JSONContent }) {
         nested: true,
       }),
       Link,
+      TiptapImage,
       Underline,
       Heading,
       ListItem,

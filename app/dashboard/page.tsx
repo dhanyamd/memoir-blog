@@ -1,3 +1,4 @@
+'use server'
 import React from 'react'
 import prisma from '../utils/db'
 import { getUser } from '../utils/getUser'

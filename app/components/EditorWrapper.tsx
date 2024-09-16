@@ -5,6 +5,8 @@ import { JSONContent } from "novel";
 import { defaultExtensions } from "./extensions";
 import { slashCommand, suggestionItems } from "./SlashCommand";
 import { handleCommandNavigation } from "novel/extensions";
+import { handleImageDrop, handleImagePaste } from "novel/plugins";
+import { uploadFn } from "./image-upload";
 
 interface EditorProps{
   initialValue? : JSONContent
@@ -22,6 +24,8 @@ const TailwindEditor = ({initialValue, onChange} : EditorProps) => {
           handleDOMEvents: {
             keydown: (_view, event ) => handleCommandNavigation(event),
           },
+          handlePaste: (view, event) => handleImagePaste(view, event, uploadFn),
+          handleDrop: (view, event, _slice, moved) =>  handleImageDrop(view, event, moved, uploadFn),
           attributes: {
             class: `prose prose-lg dark:prose-invert prose-headings:font-title font-default focus:outline-none max-w-full`,
           }

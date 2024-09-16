@@ -5,13 +5,31 @@ import {
   HorizontalRule,
   StarterKit,
   Placeholder,
+  TiptapImage,
 } from "novel/extensions";
+import { UploadImagesPlugin } from "novel/plugins";
+
 
 import { cx } from "class-variance-authority";
 
 // TODO I am using cx here to get tailwind autocomplete working, idk if someone else can write a regex to just capture the class key in objects
 
 // You can overwrite the placeholder with your own configuration
+const tiptapImage = TiptapImage.extend({
+  addProseMirrorPlugins() {
+      return [
+          UploadImagesPlugin({
+              imageClass: cx("opacity-40 rounded-lg border border-stone-200"),
+          }),
+      ];
+  },
+  }).configure({
+  allowBase64: true,
+  HTMLAttributes: {
+      class: cx("rounded-lg border border-muted"),
+  },
+});
+
 const placeholder = Placeholder;
 const tiptapLink = TiptapLink.configure({
   HTMLAttributes: {
@@ -84,6 +102,7 @@ export const defaultExtensions = [
   starterKit,
   placeholder,
   TiptapLink,
+  TiptapImage,
   taskList,
   taskItem,
   horizontalRule,
