@@ -12,7 +12,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 
 async function getData(userId : string, siteId : string){
-  const data = await prisma.post.findMany({
+  /*const data = await prisma.post.findMany({
     where : {
         userId : userId,
         siteId : siteId
@@ -34,7 +34,32 @@ async function getData(userId : string, siteId : string){
   })
 
   return data 
+}*/
+
+const data = await prisma.site.findUnique({
+  where: {
+    id: siteId,
+    userId: userId,
+  },
+  select: {
+    subdirectory: true,
+    posts: {
+      select: {
+        image: true,
+        title: true,
+        createdAt: true,
+        id: true,
+      },
+      orderBy: {
+        createdAt: "desc",
+      },
+    },
+  },
+});
+
+return data;
 }
+
 
 
 export default async function SiteIdRoute({params} : {params : {siteId : string}}){
@@ -51,7 +76,7 @@ export default async function SiteIdRoute({params} : {params : {siteId : string}
        <div>
         <div className="flex w-full justify-end gap-4">
         <Button asChild variant="secondary">
-            <Link href={`/blogs/${data[0].Site?.subdirectory}`}>
+            <Link href={`/blogs/${data?.subdirectory}`}>
             <Book className="size-4 mr-2"/>
             View Blogs</Link>
         </Button>
@@ -67,7 +92,7 @@ export default async function SiteIdRoute({params} : {params : {siteId : string}
             </Link>
         </Button>
         </div>
-        {data === undefined || data.length === 0 ? (
+        {data?.posts === undefined || data.posts.length === 0 ? (
            <EmptyState 
            title="You dont have any articles created!"
            description="You currently dont have any articles! please create one so that you could see right here"
@@ -93,7 +118,7 @@ export default async function SiteIdRoute({params} : {params : {siteId : string}
                   </TableRow>
                   </TableHeader>
                   <TableBody>
-                    {data.map((item) => (
+                    {data?.posts.map((item) => (
                       <TableRow key={item.id}>
                        <TableCell>
                         <Image src={item.image}
