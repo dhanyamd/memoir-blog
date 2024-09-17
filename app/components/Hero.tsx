@@ -113,7 +113,7 @@ export function Hero(){
                     </defs>
                   </svg>
 
-                  <Image src={HeroImage} alt="HeroImage" className="relative object-cover w-full border rounded-md shadow-2xl lg:rounded-xl" />
+                  <Image priority src={HeroImage} alt="HeroImage" className="relative object-cover w-full border rounded-md shadow-2xl lg:rounded-xl" />
                 </div>
             </div>
         </section>
