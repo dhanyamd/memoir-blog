@@ -25,8 +25,8 @@ async function getData(userId : string, siteId : string){
         Site : {
           select : {
             subdirectory : true
-          }
-        }
+          } 
+        } 
     }, 
     orderBy : {
         createdAt : 'desc'

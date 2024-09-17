@@ -37,7 +37,7 @@ async function getData(userId : string){
 
 export default async function DashboardPage() {
   const user = await getUser();
-  const {articles, sites} = await getData(user.id)
+  const {articles, sites} = await getData(user?.id)
   return (
     <div>
       <h1 className='text-2xl font-semibold mb-5'>Your Sites</h1>

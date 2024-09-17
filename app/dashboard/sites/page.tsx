@@ -32,7 +32,7 @@ export default async function SiteRoute(){
     return redirect('/api/auth/login')
   }
 
-  const data = await getData(user.id)
+  const data = await getData(user?.id)
   return (
     <>
     <div className="flex justify-end w-full">
