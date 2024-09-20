@@ -20,7 +20,7 @@ model User {
   firstName    String
   lastName     String
   profileImage String
-
+  customerId   String? @unique
   createdAt DateTime @default(now())
 
   Site  Site[]

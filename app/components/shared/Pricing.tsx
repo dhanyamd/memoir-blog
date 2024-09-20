@@ -32,7 +32,7 @@ export const PricingPlans : iAppProps[] = [{
         "Unlimited visitors",
         "Unlimited visitors"
     ],
-    priceTitle : "$29"
+    priceTitle : "$19"
 }]
 
 export default function PricingTable() {
