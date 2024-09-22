@@ -18,7 +18,7 @@ export const PricingPlans : iAppProps[] = [{
     cardTitle : "Freelancer",
     cardDescription : "The best pricing plan for people starting out",
     benefits : [
-        "10 Sites",
+        "5 Sites",
         "Up to 1000 visitors",
         "Up to 1000 visitors",
         "Up to 1000 visitors"
