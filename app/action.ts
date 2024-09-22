@@ -138,7 +138,7 @@ export async function DeleteSite(formData : FormData){
 
 export async function CreateSubscription(){
   const user = await getUser();
-  let stripeUserId = await prisma.user.findUnique({
+  let stripeUserId = await prisma.user.findUniqueOrThrow({
     where: {
       id: user.id,
     },
@@ -151,11 +151,11 @@ export async function CreateSubscription(){
 
   if (!stripeUserId?.customerId) {
     const stripeCustomer = await stripe.customers.create({
-      email: stripeUserId?.email,
-      name: stripeUserId?.firstName,
+      email: stripeUserId?.email as string,
+      name: stripeUserId?.firstName as string, 
     });
 
-    stripeUserId = await prisma.user.update({
+   stripeUserId = await prisma.user.update({
       where: {
         id: user.id,
       },
