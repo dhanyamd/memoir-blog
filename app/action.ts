@@ -29,14 +29,14 @@ export async function CreateSiteAction(prevState : any, formData : FormData){
     if(!subStatus || subStatus.status !== 'active'){
       if(sites.length < 5){
       //Allow for creating that site for the user
-      createSite()
+     await createSite()
       }else{
         // dont allow the user to create any more sites
         return redirect('/dashboard/pricing')
       }
     }  else if(subStatus?.status === 'active'){
        // user already has a premium subscription allow them to create as many sites as they want 
-       createSite()
+      await createSite()
     }
    
   async function createSite(){
@@ -67,9 +67,9 @@ const response = await prisma.site.create({
       userId : user.id
     }
   })
-
-  return redirect('/dashboard/sites')
   }
+  return redirect('/dashboard/sites')
+
 }
 
 export async function CreatePostAction(prevState : any,formData : FormData){
